@@ -57,6 +57,18 @@ export const IssueItem: FC<Prop> = ({issue}) => {
           # {issue.number} opened 2 days ago by{' '}
           <span className="font-bold">{issue.user.login}</span>
         </span>
+
+        <div className='flex flex-wrap'>
+          {
+            issue.labels.map((label) => (
+              <span key={label.id} className='px-2 mx-2 py-1 text-xs text-white rounded-md'
+                style={{
+                  border: `1px solid #${label.color}`
+                }}
+              >{label.name}</span>
+            ))
+          }
+        </div>
       </div>
 
       <img

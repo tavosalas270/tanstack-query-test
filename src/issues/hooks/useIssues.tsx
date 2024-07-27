@@ -3,14 +3,14 @@ import { getIssues } from "../actions/get-issues.action"
 import { State } from "../interfaces"
 
 interface UseIssuesProps {
-  state: State
+  state: State;
+  selectedLabels: string[];
 }
 
-const useIssues = ({state}: UseIssuesProps) => {
-  console.log(state)
+const useIssues = ({state, selectedLabels}: UseIssuesProps) => {
   const issuesQuery = useQuery({
-    queryKey: ["issues", state],
-    queryFn: () => getIssues(state),
+    queryKey: ["issues", {state, selectedLabels}],
+    queryFn: () => getIssues(state, selectedLabels),
     staleTime: 1000 * 60
   })
 
